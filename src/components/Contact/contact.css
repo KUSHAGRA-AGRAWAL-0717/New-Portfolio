@@ -1,0 +1,207 @@
+/* Contact Section */
+#contactPage {
+    min-height: calc(100vh - 4rem);
+    width: 100vw;
+    max-width: 65rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    background: rgb(30,30,30);
+    overflow: hidden;
+  }
+  
+  /* Section Titles */
+  .contactPageTitle {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #1e90ff;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Clients Section */
+  .clientDesc {
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+  
+  .clientImgs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .clientImg {
+    width: 13%;
+    
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid rgb(234, 255, 75);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .clientImg:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Contact Section */
+  .contactDesc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contactForm {
+    width: 90%;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* Form Fields */
+  .name,
+  .email,
+  .msg {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: #333;
+    color: white;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .name:focus,
+  .email:focus,
+  .msg:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px #1e90ff;
+    outline: none;
+  }
+  
+  /* Submit Button */
+  .submitBtn {
+    padding: 0.75rem 3rem;
+    border: none;
+    border-radius: 2rem;
+    background: #1e90ff;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .submitBtn:hover {
+    background: #187bcd;
+    transform: translateY(-2px);
+    cursor: pointer;
+  }
+  
+  /* Social Links */
+  .links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .link {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: 2px solid rgb(165, 173, 0);
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .link:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 720px) {
+    .clientImg {
+      width: 20%;
+    }
+    .links {
+      justify-content: center;
+    }
+    .contactForm{
+      input,textarea{
+        margin-left: 3rem;
+      }
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+
+    .contactPageTitle {
+      font-size: 2rem;
+    }
+    .clientDesc{
+      font-size: 15px;
+    }
+    .clientImg {
+      width: 20%;
+    }
+    .links {
+      gap: 0.5rem;
+    }
+  }
+  
+  @media screen and (max-width: 338px) {
+    .contactPageTitle {
+      font-size: 2rem;
+    }
+    .clientDesc,.contactDesc{
+      font-size: 12px;
+    }
+    .name,
+  .email,
+  .msg {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.6rem;
+  }
+  .submitBtn{
+    font-size: 0.6rem;
+    padding: 0.5rem 2rem;
+  }
+    .clientImg {
+      width: 20%;
+    }
+    .links {
+      gap: 0.5rem;
+    }
+  }

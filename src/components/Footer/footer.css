@@ -1,0 +1,90 @@
+/* Footer Styles */
+.footer {
+    width: 100vw;
+    height: 4rem;
+    background: rgb(40, 40, 40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    font-size: small;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+  }
+  
+  /* Footer Text */
+  .footerText {
+    font-size: 0.9rem;
+    color: #dddddd;
+    letter-spacing: 1px;
+    animation: fadeInUp 1.2s ease;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover Effects */
+  .footer:hover {
+    background: rgb(30, 30, 30);
+  }
+  
+  .footerText:hover {
+    color: #ffdf00;
+  }
+  
+  /* Background Accent Effect */
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent);
+    animation: rotateAccent 10s linear infinite;
+    z-index: 0;
+    opacity: 0.3;
+  }
+  
+  /* Ensure Text Stays on Top */
+  .footerText {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Keyframes for Accent and Text Animation */
+  @keyframes rotateAccent {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 600px) {
+    .footer {
+      height: 6rem;
+      padding: 1rem 0.5rem;
+    }
+  
+    .footerText {
+      font-size: 0.8rem;
+    }
+  }
+  
