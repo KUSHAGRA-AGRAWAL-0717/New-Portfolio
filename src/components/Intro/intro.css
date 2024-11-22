@@ -1,0 +1,187 @@
+/* Intro Section */
+#intro {
+    height: calc(100vh - 4rem);
+    width: 100vw;
+    max-width: 75rem;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg,30, 30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Background Image */
+  .bg {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    z-index: -1;
+    object-fit: cover;
+    height: 100vh;
+    opacity: 0.8;
+    filter: blur(2px);
+    transform: scale(1.05);
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
+  
+  #intro:hover .bg {
+    transform: scale(1.1);
+    filter: blur(0);
+  }
+  
+  /* Intro Content */
+  .introContent {
+    height: auto;
+    width: 100%;
+    padding: 2rem;
+    text-align: left;
+    color: white;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  .hello {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: slideInLeft 1s ease;
+  }
+  
+  .introText {
+    margin: 1rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #ffffff;
+    animation: slideInLeft 1.2s ease;
+  }
+  
+  .introName {
+    color: #ffdf00;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.3s ease;
+  }
+  
+  .introName:hover {
+    color: #ff9f00;
+  }
+  
+  /* Intro Paragraph */
+  .introPara {
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffc505;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    animation: fadeIn 1.5s ease;
+  }
+  
+  /* Button Styles */
+  .btn {
+    background: linear-gradient(135deg, #ff9f00, #ffdf00);
+    color: #000;
+    margin: 1rem 0;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: linear-gradient(135deg, #ffdf00, #ffd700);
+  }
+  
+  .btnImg {
+    object-fit: contain;
+    margin-right: 0.5rem;
+    height: 1rem;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 840px) {
+    .bg {
+      right: -10vw;
+      top: -2rem;
+    }
+  
+    .introContent {
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  
+    .hello {
+      font-size: 1.25rem;
+    }
+  
+    .introText {
+      font-size: 2rem;
+    }
+  
+    .introPara {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .bg {
+      right: -20vw;
+    }
+  
+    .introContent {
+      font-size: 0.8rem;
+    }
+  
+    .hello {
+      font-size: 1rem;
+    }
+  
+    .introText {
+      font-size: 1.5rem;
+    }
+  
+    .introPara {
+      font-size: 0.8rem;
+    }
+    .btn{
+      margin: 0.5rem 0;
+      padding: 0.3rem 1rem;
+      font-size: 0.6rem;
+      font-weight: 500;
+    }
+  }
+  

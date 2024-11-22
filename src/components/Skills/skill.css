@@ -1,0 +1,147 @@
+/* Skills Section Styling */
+#skills {
+    width: 100vw;
+    max-width: 65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  /* Title Styling */
+  .skillTitle {
+    font-size: 3rem;
+    font-weight: 600;
+    padding-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #ffdf00;
+    letter-spacing: 1px;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Description Styling */
+  .skillDesc {
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: #e3e3e3;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+  
+  /* Skills Bar Container */
+  .skillsBars {
+    width: 100%;
+    max-width: 80%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Each Skill Bar */
+  .skillBar {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(50, 50, 50, 0.9);
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  
+  /* Hover Effect on Skill Bar */
+  .skillBar:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Skill Bar Image */
+  .skillBarImg {
+    height: 3rem;
+    width: 3rem;
+    margin-right: 2rem;
+    border-radius: 50%;
+    border: 2px solid #ffdf00;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover Effect on Skill Bar Image */
+  .skillBar:hover .skillBarImg {
+    transform: scale(1.1);
+  }
+  
+  /* Skill Bar Text */
+  .skillBarText h2 {
+    font-size: 1.5rem;
+    color: #ffdf00;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+  
+  .skillBarText p {
+    font-size: 1rem;
+    color: #e3e3e3;
+    font-weight: 300;
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  /* Keyframes for Fade-In Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 720px) {
+    .skillBarText h2 {
+      font-size: 1.2rem;
+    }
+    .skillDesc{
+      font-size: 15px
+    }
+    .skillBarText p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .skillBarImg {
+      height: 2.25rem;
+      width: 2.25rem;
+    }
+    .skillBarText h2 {
+      font-size: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 337px) {
+    .skillTitle{
+      font-size: 2rem;
+    }
+    .skillDesc{
+      font-size: 0.7rem;
+    }
+    .skillBarText p{
+font-size: 0.5rem;
+    }
+    .skillBarText h2{
+font-size: 0.7rem;
+    }
+    .skillBarImg{
+      height: 3rem;
+      width: 3rem;
+    }
+  }
