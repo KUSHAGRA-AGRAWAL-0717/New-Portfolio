@@ -43,6 +43,7 @@
   
   .desktopMenuListItem:hover {
     color: yellow;
+    cursor: pointer;
     transform: scale(1.1);
   }
   
@@ -109,6 +110,7 @@
     border-radius: 1rem;
     background: rgb(30, 30, 30);
     transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
   }
   
   .listItem:hover {

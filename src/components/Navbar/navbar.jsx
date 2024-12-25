@@ -28,11 +28,11 @@ const Navbar = () => {
 
       {showMenu && (
         <div className="navMenu">
-          <Link to="intro" activeClass="active" spy={false} smooth={false} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Home</Link>
-          <Link to="skills" activeClass="active" spy={false} smooth={false} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>About</Link>
-          <Link to="works" activeClass="active" spy={false} smooth={false} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Projects</Link>
-          <Link to="clients" activeClass="active" spy={false} smooth={false} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Tech Stack</Link>
-          <Link to="contact" activeClass="active" spy={false} smooth={false} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Contact</Link>
+          <Link to="intro" activeClass="active" spy={false} smooth={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Home</Link>
+          <Link to="skills" activeClass="active" spy={false} smooth={true} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>About</Link>
+          <Link to="works" activeClass="active" spy={false} smooth={true} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Projects</Link>
+          <Link to="clients" activeClass="active" spy={false} smooth={true} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Tech Stack</Link>
+          <Link to="contact" activeClass="active" spy={false} smooth={true} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Contact</Link>
         </div>
       )}
     </nav>
