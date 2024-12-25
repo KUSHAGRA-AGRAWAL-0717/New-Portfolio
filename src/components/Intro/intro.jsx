@@ -16,7 +16,7 @@ const Intro = () => {
           Web Developer
         </span>
         <p className="introPara">
-        Skilled web developer exploring AI/ML to <br />create innovative solutions
+        Skilled web developer exploring<br /> AI/ML to create innovative solutions
         </p>
         <Link to="contact" smooth={true} duration={500}>
           <button className="btn">
