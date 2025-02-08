@@ -26,7 +26,7 @@ const Contact = () => {
     [info1, "https://github.com/KUSHAGRA-AGRAWAL-0717","Github"],
     [info2, "https://www.linkedin.com/in/kushagraagrawal017/","LinkedIn"],
     [info3, "https://leetcode.com/u/Kushagra_0717/","LeetCode"],
-    [info4, "https://drive.google.com/file/d/1pIsNrgdECKOEbm_m3xFdfv6VzriuKppo/view?usp=sharing","Resume"]
+    [info4, "https://drive.google.com/file/d/1lNJLLtUu4DzHbXvSADvpAYWFhvMFjQf2/view?usp=sharing","Resume"]
   ];
 
   const form = useRef();
