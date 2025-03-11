@@ -14,6 +14,7 @@ import info1 from '../assets/info1.jpg';
 import info2 from '../assets/info2.png';
 import info3 from '../assets/info3.png';
 import info4 from '../assets/info4.webp';
+import info5 from '../assets/info5.jpeg';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -26,7 +27,8 @@ const Contact = () => {
     [info1, "https://github.com/KUSHAGRA-AGRAWAL-0717","Github"],
     [info2, "https://www.linkedin.com/in/kushagraagrawal017/","LinkedIn"],
     [info3, "https://leetcode.com/u/Kushagra_0717/","LeetCode"],
-    [info4, "https://drive.google.com/file/d/1mqF_jSQnIjogfrhj9vG7JuZYeewptNIW/view?usp=sharing","Resume"]
+    [info4, "https://drive.google.com/file/d/1mqF_jSQnIjogfrhj9vG7JuZYeewptNIW/view?usp=sharing","Resume"],
+    [info5, "https://www.instagram.com/kushagra_agrawal0717/","Instagram"]
   ];
 
   const form = useRef();

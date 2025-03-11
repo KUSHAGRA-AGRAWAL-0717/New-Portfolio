@@ -1,18 +1,18 @@
 import React from 'react';
 import './works.css';
-import pr1 from "../assets/pr1.png";
-import pr2 from "../assets/pr2.png";
-import pr3 from "../assets/pr3.png";
-import pr4 from "../assets/pr4.png";
-import pr5 from "../assets/pr5.png";
+import mailmaster from "../assets/mailmaster.png";
+import coldmail from "../assets/coldemail.png";
+import tomato from "../assets/tomato.png";
+import faceRecog from "../assets/faceRecog.png";
+import chatApp from "../assets/chatApp.png";
 
 const Works = () => {
   const prjcts = [
-    { img: pr1, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Hero_Web_app" ,name: "Hero app"},
-    { img: pr2, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/mailMaster" ,name:"Mail Master"},
-    { img: pr3, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Admin-Panel" ,name:"Admin Panel"},
-    { img: pr4, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Chat_site-MERN-",name:"Chat App" },
-    { img: pr5, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Face_recognition_system" ,name:"Face recogn. ML"}
+    { img: mailmaster, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/mailMaster" ,name: "Mail Master"},
+    { img: coldmail, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/AutoPitch" ,name:"AutoPitch"},
+    { img: tomato, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Tomato-disease-detector/tree/master" ,name:"Tomato-disease-detector"},
+    { img: faceRecog, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Face_recognition_system",name:"Face recognition app" },
+    { img: chatApp, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Chat_site-MERN-" ,name:"Chat Application"},
   ];
 
   return (

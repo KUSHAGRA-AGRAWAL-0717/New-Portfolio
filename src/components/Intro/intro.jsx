@@ -13,10 +13,10 @@ const Intro = () => {
         <span className="introText">
           I'm <span className="introName">Kushagra</span>
           <br />
-          Web Developer
+          Software Developer
         </span>
         <p className="introPara">
-        Skilled web developer exploring<br /> AI/ML to create innovative solutions
+        Skilled in web development exploring<br /> AI/ML to create innovative solutions
         </p>
         <Link to="contact" smooth={true} duration={500}>
           <button className="btn">
