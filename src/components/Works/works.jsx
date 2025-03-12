@@ -10,7 +10,7 @@ const Works = () => {
   const prjcts = [
     { img: mailmaster, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/mailMaster" ,name: "Mail Master"},
     { img: coldmail, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/AutoPitch" ,name:"AutoPitch"},
-    { img: tomato, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Tomato-disease-detector/tree/master" ,name:"Tomato-disease-detector"},
+    { img: tomato, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Tomato-disease-detector/tree/master" ,name:"TomAIto"},
     { img: faceRecog, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Face_recognition_system",name:"Face recognition app" },
     { img: chatApp, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Chat_site-MERN-" ,name:"Chat Application"},
   ];
