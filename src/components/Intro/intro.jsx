@@ -13,7 +13,7 @@ const Intro = () => {
         <span className="introText">
           I'm <span className="introName">Kushagra</span>
           <br />
-          Software Developer
+          Aspiring Dev
         </span>
         <p className="introPara">
         Skilled in web development exploring<br /> AI/ML to create innovative solutions
