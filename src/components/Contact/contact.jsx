@@ -27,7 +27,7 @@ const Contact = () => {
     [info1, "https://github.com/KUSHAGRA-AGRAWAL-0717","Github"],
     [info2, "https://www.linkedin.com/in/kushagraagrawal017/","LinkedIn"],
     [info3, "https://leetcode.com/u/Kushagra_0717/","LeetCode"],
-    [info4, "https://drive.google.com/file/d/1mqF_jSQnIjogfrhj9vG7JuZYeewptNIW/view?usp=sharing","Resume"],
+    [info4, "https://drive.google.com/file/d/14f44H7wVQNGwxtCZzta626PBi-SQiehs/view?usp=sharing","Resume"],
     [info5, "https://www.instagram.com/kush_agr07/","Instagram"]
   ];
 
