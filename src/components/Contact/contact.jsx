@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './contact.css';
 import tech1 from '../assets/tech1.png';
 import tech2 from '../assets/tech2.jpg';
@@ -32,6 +32,65 @@ const Contact = () => {
   ];
 
   const form = useRef();
+  const techSectionRef = useRef(null);
+  const contactSectionRef = useRef(null);
+
+  // Animation on scroll functionality
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px"
+    };
+
+    const techImgsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const images = entry.target.querySelectorAll('.clientImg');
+          images.forEach((img, index) => {
+            img.style.animationDelay = `${index * 0.1}s`;
+            img.classList.add('animate-in');
+          });
+        }
+      });
+    }, observerOptions);
+
+    const formObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('form-animate');
+        }
+      });
+    }, observerOptions);
+
+    const titleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('title-animate');
+        }
+      });
+    }, observerOptions);
+
+    if (techSectionRef.current) {
+      techImgsObserver.observe(techSectionRef.current);
+      const techTitle = techSectionRef.current.querySelector('.contactPageTitle');
+      if (techTitle) titleObserver.observe(techTitle);
+    }
+
+    if (contactSectionRef.current) {
+      formObserver.observe(contactSectionRef.current.querySelector('.contactForm'));
+      const contactTitle = contactSectionRef.current.querySelector('.contactPageTitle');
+      if (contactTitle) titleObserver.observe(contactTitle);
+    }
+
+    return () => {
+      if (techSectionRef.current) {
+        techImgsObserver.unobserve(techSectionRef.current);
+      }
+      if (contactSectionRef.current) {
+        formObserver.unobserve(contactSectionRef.current.querySelector('.contactForm'));
+      }
+    };
+  }, []);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -59,7 +118,7 @@ const Contact = () => {
   return (
     <section id="contactPage">
       {/* Tech Stack Section */}
-      <div id="clients">
+      <div id="clients" ref={techSectionRef}>
         <h1 className="contactPageTitle">Tech Stack</h1>
         <p className="clientDesc">
           Equipped with a dynamic tech stack that bridges cutting-edge web development and AI/ML innovation, 
@@ -71,51 +130,69 @@ const Contact = () => {
               src={tech} 
               alt={`Tech ${index + 1}`} 
               className="clientImg" 
-              key={index} 
+              key={index}
+              style={{ animationDelay: `${index * 0.1}s` }}
             />
           ))}
         </div>
       </div>
 
       {/* Contact Section */}
-      <div id="contact">
+      <div id="contact" ref={contactSectionRef}>
         <h1 className="contactPageTitle">Contact Me</h1>
         <p className="contactDesc">
-          Have a question or want to collaborate? Drop me a message below, <br />and I’ll get back to you!
+          Have a question or want to collaborate? Drop me a message below, <br />and I'll get back to you!
         </p>
         <form ref={form} onSubmit={sendEmail} className="contactForm">
-          <input 
-            type="text" 
-            className="name" 
-            placeholder="Your Name" 
-            name="your_name" 
-            required 
-          />
-          <input 
-            type="email" 
-            className="email" 
-            placeholder="Your Email" 
-            name="your_email" 
-            required 
-          />
-          <textarea 
-            name="message" 
-            className="msg" 
-            rows="5" 
-            placeholder="Your Message" 
-            required
-          ></textarea>
-          <button type="submit" className="submitBtn">Submit</button>
+          <div className="input-container">
+            <input 
+              type="text" 
+              className="name" 
+              placeholder="Your Name" 
+              name="your_name" 
+              required 
+            />
+            <span className="focus-border"></span>
+          </div>
+          
+          <div className="input-container">
+            <input 
+              type="email" 
+              className="email" 
+              placeholder="Your Email" 
+              name="your_email" 
+              required 
+            />
+            <span className="focus-border"></span>
+          </div>
+          
+          <div className="input-container">
+            <textarea 
+              name="message" 
+              className="msg" 
+              rows="5" 
+              placeholder="Your Message" 
+              required
+            ></textarea>
+            <span className="focus-border textarea"></span>
+          </div>
+          
+          <button type="submit" className="submitBtn">
+            <span>Submit</span>
+            <div className="button-effect"></div>
+          </button>
+          
           <div className="links">
-            {info.map(([image, link], index) => (
-              <a href={link} target="_blank" rel="noopener noreferrer" key={index}>
-                <img 
-                  src={image} 
-                  alt={`Link ${index + 1}`} 
-                  className="link" 
-                />
-              </a>
-              
+            {info.map(([image, link, name], index) => (
+              <div className="link-wrapper" key={index} data-tooltip={name}>
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                  <img 
+                    src={image} 
+                    alt={name} 
+                    className="link" 
+                  />
+                </a>
+              </div>
             ))}
           </div>
         </form>

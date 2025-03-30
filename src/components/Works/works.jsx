@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './works.css';
 import mailmaster from "../assets/mailmaster.png";
 import coldmail from "../assets/coldemail.png";
@@ -7,13 +7,31 @@ import faceRecog from "../assets/faceRecog.png";
 import chatApp from "../assets/chatApp.png";
 
 const Works = () => {
-  const prjcts = [
-    { img: mailmaster, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/mailMaster" ,name: "Mail Master"},
-    { img: coldmail, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/AutoPitch" ,name:"AutoPitch"},
-    { img: tomato, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Tomato-disease-detector/tree/master" ,name:"TomAIto"},
-    { img: faceRecog, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Face_recognition_system",name:"FaceMatrix" },
-    { img: chatApp, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Chat_site-MERN-" ,name:"Chat App"},
+  const projects = [
+    { img: mailmaster, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/mailMaster", name: "Mail Master", delay: 0 },
+    { img: coldmail, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/AutoPitch", name: "AutoPitch", delay: 0.1 },
+    { img: tomato, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Tomato-disease-detector/tree/master", name: "TomAIto", delay: 0.2 },
+    { img: faceRecog, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Face_recognition_system", name: "FaceMatrix", delay: 0.3 },
+    { img: chatApp, link: "https://github.com/KUSHAGRA-AGRAWAL-0717/Chat_site-MERN-", name: "Chat App", delay: 0.4 },
   ];
+
+  // Add intersection observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach(el => observer.observe(el));
+
+    return () => {
+      hiddenElements.forEach(el => observer.unobserve(el));
+    };
+  }, []);
 
   return (
     <section id="works">
@@ -22,18 +40,31 @@ const Works = () => {
         Explore a variety of projects that showcase my skills and creativity. Each project represents my dedication to delivering quality work.
       </p>
       <div className="worksImgs">
-        {prjcts.map((project, index) => (
-          <div className="workDiv"  key={index}>
-            
-            <a href={project.link}>
-            <img src={project.img} alt={`Portfolio ${index + 1}`} className="worksImg" />
-          </a>
-          <p>{project.name}</p>
+        {projects.map((project, index) => (
+          <div 
+            className="workDiv hidden" 
+            key={index} 
+            style={{ animationDelay: `${project.delay}s` }}
+          >
+            <div className="imgContainer">
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <img 
+                  src={project.img} 
+                  alt={project.name} 
+                  className="worksImg" 
+                />
+                <div className="overlay">
+                  <span>View Project</span>
+                </div>
+              </a>
+            </div>
+            <p className="projectName">{project.name}</p>
           </div>
-          
         ))}
       </div>
-      <a href="https://github.com/KUSHAGRA-AGRAWAL-0717"><button className="workBtn">See More</button></a>
+      <a href="https://github.com/KUSHAGRA-AGRAWAL-0717" target="_blank" rel="noopener noreferrer">
+        <button className="workBtn">See More</button>
+      </a>
     </section>
   );
 };

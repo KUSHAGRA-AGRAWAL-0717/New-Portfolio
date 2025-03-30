@@ -1,134 +1,253 @@
 /* Works Section */
 #works {
-    min-height: calc(100vh - 4rem);
-    width: 100vw;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1rem;
-    background: rgb(30, 30, 30);
-    overflow: hidden;
+  min-height: calc(100vh - 4rem);
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: rgb(30, 30, 30);
+  overflow: hidden;
+}
+
+/* Title Styling */
+.worksTitle {
+  font-size: 3rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #FFD700, #FFC107);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+}
+
+.worksTitle::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: #FFD700;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Description Styling */
+.worksDesc {
+  font-weight: 300;
+  font-size: 1.2rem;
+  max-width: 60rem;
+  color: #ffffff;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Portfolio Images Container */
+.worksImgs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 65rem;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.workDiv {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  transition: transform 0.4s ease;
+}
+
+.workDiv.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.workDiv.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.imgContainer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+}
+
+.imgContainer:hover {
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  transform: scale(1.05) translateY(-10px);
+}
+
+/* Each Portfolio Image */
+.worksImg {
+  height: 10rem;
+  width: 10rem;
+  object-fit: cover;
+  border: 3px solid rgb(30, 30, 30);
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+/* Overlay Effect */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 215, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.overlay span {
+  color: #000;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.imgContainer:hover .overlay {
+  opacity: 1;
+}
+
+.imgContainer:hover .overlay span {
+  transform: translateY(0);
+}
+
+/* Project Name */
+.projectName {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #FFC107;
+  transition: color 0.3s ease;
+}
+
+.workDiv:hover .projectName {
+  color: #FFD700;
+}
+
+/* Button Styling */
+.workBtn {
+  margin: 3rem 0;
+  padding: 0.75rem 2.5rem;
+  border: none;
+  border-radius: 2rem;
+  background: linear-gradient(135deg, #FFD700, #FFC107);
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button Hover Effect */
+.workBtn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+  cursor: pointer;
+}
+
+.workBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.6s ease;
+}
+
+.workBtn:hover::before {
+  left: 100%;
+}
+
+/* Keyframes for Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  /* Title Styling */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover Pulse Animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 720px) {
   .worksTitle {
-    font-size: 3rem;
-    font-weight: 600;
-    color: #ffdf00;
-    margin-bottom: 1rem;
-    animation: fadeIn 1s ease-in-out;
+    font-size: 2.5rem;
   }
-  
-  /* Description Styling */
   .worksDesc {
-    font-weight: 300;
-    font-size: 1.2rem;
-    max-width: 60rem;
-    color: #ffffff;
-    line-height: 1.5;
-    margin-bottom: 2rem;
-    animation: fadeIn 1.2s ease-in-out;
+    font-size: 1rem;
   }
-  
-  /* Portfolio Images Container */
+  .worksImg {
+    height: 15rem;
+    width: 14rem;
+  }
+  .overlay span {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .worksTitle {
+    font-size: 2rem;
+  }
+  .worksDesc {
+    font-size: 0.9rem;
+  }
   .worksImgs {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 65rem;
     gap: 1rem;
   }
-  .workDiv{
-    text-align: center;
-    p{
-      font-size: 0.7rem;
-    }
-  }
-  
-  /* Each Portfolio Image */
   .worksImg {
-    height: 10rem;
-    width: 10rem;
-    object-fit: cover;
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 4rem;
+    width: 4rem;
   }
-  
-  /* Hover Effect on Image */
-  .worksImg:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+  .overlay span {
+    font-size: 0.6rem;
   }
-  
-  /* Button Styling */
+  .projectName {
+    font-size: 0.8rem;
+  }
   .workBtn {
-    margin: 3rem 0;
-    padding: 0.75rem 2.5rem;
-    border: none;
-    border-radius: 2rem;
-    background: #ff6347;
-    color: white;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: background 0.3s ease, transform 0.2s ease;
+    margin: 2rem 0;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.6rem;
   }
-  
-  /* Hover Effect on Button */
-  .workBtn:hover {
-    background: #e5533b;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-  
-  /* Keyframes for Fade-In Animation */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Responsive Design */
-  @media screen and (max-width: 720px) {
-    .worksTitle {
-      font-size: 2.5rem;
-    }
-    .worksDesc {
-      font-size: 1rem;
-    }
-    .worksImg {
-      height: 15rem;
-      width: 14rem;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .worksTitle {
-      font-size: 2rem;
-    }
-    .worksDesc {
-      font-size: 0.9rem;
-    }
-    .worksImg {
-      height: 4rem;
-      width: 4rem;
-    }
-    .workBtn{
-      margin: 2rem 0;
-      padding: 0.5rem 1.5rem;
-      font-size: 0.6rem;
-    }
-  }
-  
+}

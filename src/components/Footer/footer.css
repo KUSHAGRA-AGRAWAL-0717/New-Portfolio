@@ -1,90 +1,239 @@
-/* Footer Styles */
 .footer {
-    width: 100vw;
-    height: 4rem;
-    background: rgb(40, 40, 40);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 300;
-    font-size: small;
-    color: #ffffff;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    padding: 1rem;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease;
+  width: 100vw;
+  height: 6rem;
+  background: rgb(40, 40, 40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  font-size: small;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+}
+
+/* Footer Content */
+.footer-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Footer Text */
+.footerText {
+  font-size: 0.9rem;
+  color: #dddddd;
+  letter-spacing: 1px;
+  animation: fadeInUp 1.2s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin: 0;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.icon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* Yellow Box Shadow Hover Effect */
+.footer.hovered {
+  box-shadow: 0 -4px 20px rgba(255, 223, 0, 0.4);
+  background: rgb(35, 35, 35);
+}
+
+.footer.hovered .social-icons {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer.hovered .footerText {
+  color: #ffdf00;
+  transform: translateY(-5px);
+}
+
+/* Background Accent Effect */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent);
+  animation: rotateAccent 10s linear infinite;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+/* Floating Particles Animation */
+.footer-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 223, 0, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.footer.hovered .particle {
+  animation: floatParticle 3s ease-in-out infinite;
+}
+
+.footer.hovered .particle:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.footer.hovered .particle:nth-child(2) {
+  top: 60%;
+  left: 20%;
+  animation-delay: 0.2s;
+}
+
+.footer.hovered .particle:nth-child(3) {
+  top: 40%;
+  left: 30%;
+  animation-delay: 0.1s;
+}
+
+.footer.hovered .particle:nth-child(4) {
+  top: 70%;
+  left: 40%;
+  animation-delay: 0.3s;
+}
+
+.footer.hovered .particle:nth-child(5) {
+  top: 30%;
+  left: 50%;
+  animation-delay: 0.5s;
+}
+
+.footer.hovered .particle:nth-child(6) {
+  top: 80%;
+  left: 60%;
+  animation-delay: 0.4s;
+}
+
+.footer.hovered .particle:nth-child(7) {
+  top: 20%;
+  left: 70%;
+  animation-delay: 0.2s;
+}
+
+.footer.hovered .particle:nth-child(8) {
+  top: 50%;
+  left: 80%;
+  animation-delay: 0.1s;
+}
+
+.footer.hovered .particle:nth-child(9) {
+  top: 30%;
+  left: 90%;
+  animation-delay: 0.3s;
+}
+
+.footer.hovered .particle:nth-child(10) {
+  top: 60%;
+  left: 95%;
+  animation-delay: 0.5s;
+}
+
+/* Keyframes for Accent and Text Animation */
+@keyframes rotateAccent {
+  from {
+    transform: rotate(0deg);
   }
-  
-  /* Footer Text */
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-20px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.5);
+  }
+}
+
+/* Pulse Animation for Entire Footer */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.005);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.footer.hovered {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .footer {
+    height: 6rem;
+    padding: 1rem 0.5rem;
+  }
+
   .footerText {
-    font-size: 0.9rem;
-    color: #dddddd;
-    letter-spacing: 1px;
-    animation: fadeInUp 1.2s ease;
-    transition: color 0.3s ease;
+    font-size: 0.8rem;
   }
   
-  /* Hover Effects */
-  .footer:hover {
-    background: rgb(30, 30, 30);
+  .social-icons {
+    gap: 0.7rem;
   }
-  
-  .footerText:hover {
-    color: #ffdf00;
-  }
-  
-  /* Background Accent Effect */
-  .footer::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent);
-    animation: rotateAccent 10s linear infinite;
-    z-index: 0;
-    opacity: 0.3;
-  }
-  
-  /* Ensure Text Stays on Top */
-  .footerText {
-    position: relative;
-    z-index: 1;
-  }
-  
-  /* Keyframes for Accent and Text Animation */
-  @keyframes rotateAccent {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Responsive Design */
-  @media screen and (max-width: 600px) {
-    .footer {
-      height: 6rem;
-      padding: 1rem 0.5rem;
-    }
-  
-    .footerText {
-      font-size: 0.8rem;
-    }
-  }
-  
+}
