@@ -6,7 +6,7 @@ const Experience = () => {
   const experienceData = [
     {
       role: 'React.js Intern',
-      company: 'Vitraga',
+      company: 'Vitraga Solutions',
       duration: 'Mar 2025 - Present',
       type: 'work',
     },
@@ -18,7 +18,7 @@ const Experience = () => {
     },
     {
       role: 'Web Core Team Member',
-      company: 'Google Developer Student Clubs',
+      company: 'Google Developer Student Clubs NIT Jalandhar',
       duration: 'Nov 2024 - Present',
       type: 'work',
     },
