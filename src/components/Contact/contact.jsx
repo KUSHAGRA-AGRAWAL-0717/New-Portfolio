@@ -70,24 +70,31 @@ const Contact = () => {
       });
     }, observerOptions);
 
-    if (techSectionRef.current) {
-      techImgsObserver.observe(techSectionRef.current);
-      const techTitle = techSectionRef.current.querySelector('.contactPageTitle');
+    // Store current ref values in variables
+    const currentTechSection = techSectionRef.current;
+    const currentContactSection = contactSectionRef.current;
+
+    if (currentTechSection) {
+      techImgsObserver.observe(currentTechSection);
+      const techTitle = currentTechSection.querySelector('.contactPageTitle');
       if (techTitle) titleObserver.observe(techTitle);
     }
 
-    if (contactSectionRef.current) {
-      formObserver.observe(contactSectionRef.current.querySelector('.contactForm'));
-      const contactTitle = contactSectionRef.current.querySelector('.contactPageTitle');
+    if (currentContactSection) {
+      const contactForm = currentContactSection.querySelector('.contactForm');
+      if (contactForm) formObserver.observe(contactForm);
+      
+      const contactTitle = currentContactSection.querySelector('.contactPageTitle');
       if (contactTitle) titleObserver.observe(contactTitle);
     }
 
     return () => {
-      if (techSectionRef.current) {
-        techImgsObserver.unobserve(techSectionRef.current);
+      if (currentTechSection) {
+        techImgsObserver.unobserve(currentTechSection);
       }
-      if (contactSectionRef.current) {
-        formObserver.unobserve(contactSectionRef.current.querySelector('.contactForm'));
+      if (currentContactSection) {
+        const contactForm = currentContactSection.querySelector('.contactForm');
+        if (contactForm) formObserver.unobserve(contactForm);
       }
     };
   }, []);
