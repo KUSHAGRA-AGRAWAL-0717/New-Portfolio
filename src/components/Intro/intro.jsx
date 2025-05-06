@@ -3,7 +3,7 @@ import './intro.css';
 import { Link } from 'react-scroll';
 import hire from "../assets/hire.jpg";
 // import profileph from "../assets/latpro2.png";
-import profileLatest from "../assets/newProfile4.jpg"
+import profileLatest from "../assets/bgnew.png"
 
 const Intro = () => {
   return (

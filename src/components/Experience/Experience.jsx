@@ -11,8 +11,8 @@ const Experience = () => {
       type: 'work',
     },
     {
-      role: 'AI Engineer Intern',
-      company: 'AceNurture',
+      role: 'Machine Learning Intern',
+      company: 'Codveda Technologies',
       duration: 'April 2025 - Present',
       type: 'work',
     },
