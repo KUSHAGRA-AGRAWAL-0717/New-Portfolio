@@ -11,12 +11,6 @@ const Experience = () => {
       type: 'work',
     },
     {
-      role: 'Machine Learning Intern',
-      company: 'Codveda Technologies',
-      duration: 'April 2025 - Present',
-      type: 'work',
-    },
-    {
       role: 'Web Core Team Member',
       company: 'Google Developer Student Clubs NIT Jalandhar',
       duration: 'Nov 2024 - Present',
