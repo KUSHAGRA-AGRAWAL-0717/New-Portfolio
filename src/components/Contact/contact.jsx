@@ -37,7 +37,7 @@ const Contact = () => {
     [info3, "https://leetcode.com/u/Kushagra_0717/", "LeetCode"],
     [
       info4,
-      "https://drive.google.com/file/d/1eDG13Apgf1m1imKMUd5QZ8_EKTcSexHl/view?usp=sharing",
+      "https://drive.google.com/file/d/16M57v69FWeClsZ4TgkH9ggvzrtO55pvQ/view?usp=sharing",
       "Resume",
     ],
     [info5, "https://www.instagram.com/kush_agr07/", "Instagram"],
