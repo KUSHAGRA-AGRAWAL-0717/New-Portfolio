@@ -14,8 +14,8 @@ import info1 from "../assets/info1.jpg";
 import info2 from "../assets/info2.png";
 import info3 from "../assets/info3.png";
 import info4 from "../assets/info4.webp";
-import info5 from "../assets/info5.jpeg";
 import emailjs from "@emailjs/browser";
+import twitter from "../assets/Twitter.png";
 
 const Contact = () => {
   const techStack = [
@@ -40,7 +40,7 @@ const Contact = () => {
       "https://drive.google.com/file/d/1C351P-APz38JrgSE8i3UsXN9QxNV0CQb/view?usp=sharing",
       "Resume",
     ],
-    [info5, "https://www.instagram.com/kush_agr07/", "Instagram"],
+    [twitter, "https://x.com/KushagraAg0717", "Twitter X"],
   ];
 
   const form = useRef();
