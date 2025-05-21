@@ -7,7 +7,7 @@ const Experience = () => {
     {
       role: 'React.js Intern',
       company: 'Vitraga Solutions',
-      duration: 'Mar 2025 - Present',
+      duration: 'April 2025 - May 2025',
       type: 'work',
     },
     {
