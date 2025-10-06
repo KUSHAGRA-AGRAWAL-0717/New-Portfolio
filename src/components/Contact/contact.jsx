@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./contact.css";
 import tech1 from "../assets/tech1.png";
 import tech2 from "../assets/tech2.jpg";
@@ -46,6 +46,14 @@ const Contact = () => {
   const form = useRef();
   const techSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
+
+  // Controlled fields for floating labels and status
+  const [nameVal, setNameVal] = useState("");
+  const [emailVal, setEmailVal] = useState("");
+  const [msgVal, setMsgVal] = useState("");
+  const [sending, setSending] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   // Animation on scroll functionality
   useEffect(() => {
@@ -114,7 +122,8 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+    setSending(true);
+    setError("");
     emailjs
       .sendForm(
         process.env.REACT_APP_SERVICE_ID,
@@ -124,19 +133,32 @@ const Contact = () => {
       )
       .then(
         () => {
-          console.log("SUCCESS!");
-          e.target.reset();
-          alert("Email sent, thanks for contacting Kushagra Agrawal!");
+          setSending(false);
+          setSuccess(true);
+          // reset fields
+          setNameVal("");
+          setEmailVal("");
+          setMsgVal("");
+          // hide success after a short delay
+          setTimeout(() => setSuccess(false), 3200);
         },
-        (error) => {
-          console.log("FAILED...", error.text);
-          alert("Failed to send email. Please try again later.");
+        (err) => {
+          setSending(false);
+          console.log("FAILED...", err.text || err);
+          setError("Failed to send email. Please try again later.");
         }
       );
   };
 
   return (
     <section id="contactPage">
+      {/* background animated blobs */}
+      <div className="contactBlobs" aria-hidden="true">
+        <div className="blob b1" />
+        <div className="blob b2" />
+        <div className="blob b3" />
+      </div>
+
       {/* Tech Stack Section */}
       <div id="clients" ref={techSectionRef}>
         <h1 className="contactPageTitle">Tech Stack</h1>
@@ -168,47 +190,73 @@ const Contact = () => {
           and I'll get back to you!
         </p>
         <form ref={form} onSubmit={sendEmail} className="contactForm">
-          <div className="input-container">
+          <div className={`input-container ${nameVal ? "filled" : ""}`}>
             <input
               type="text"
               className="name"
-              placeholder="Your Name"
+              placeholder=""
               name="your_name"
+              value={nameVal}
+              onChange={(e) => setNameVal(e.target.value)}
+              aria-label="Your name"
               required
             />
+            <label className="floating-label">Your Name</label>
             <span className="focus-border"></span>
           </div>
 
-          <div className="input-container">
+          <div className={`input-container ${emailVal ? "filled" : ""}`}>
             <input
               type="email"
               className="email"
-              placeholder="Your Email"
+              placeholder=""
               name="your_email"
+              value={emailVal}
+              onChange={(e) => setEmailVal(e.target.value)}
+              aria-label="Your email"
               required
             />
+            <label className="floating-label">Your Email</label>
             <span className="focus-border"></span>
           </div>
 
-          <div className="input-container">
+          <div className={`input-container ${msgVal ? "filled" : ""}`}>
             <textarea
               name="message"
               className="msg"
               rows="5"
-              placeholder="Your Message"
+              placeholder=""
+              value={msgVal}
+              onChange={(e) => setMsgVal(e.target.value)}
+              aria-label="Your message"
               required
             ></textarea>
+            <label className="floating-label">Your Message</label>
             <span className="focus-border textarea"></span>
           </div>
 
-          <button type="submit" className="submitBtn">
-            <span>Submit</span>
+          <button type="submit" className="submitBtn" disabled={sending}>
+            <span>{sending ? "Sending..." : "Submit"}</span>
             <div className="button-effect"></div>
           </button>
 
+          {success && (
+            <div className="submitSuccess" role="status" aria-live="polite">
+              <div className="checkmark">✓</div>
+              <div className="successText">Message sent — thank you!</div>
+            </div>
+          )}
+
+          {error && <div className="submitError">{error}</div>}
+
           <div className="links">
             {info.map(([image, link, name], index) => (
-              <div className="link-wrapper" key={index} data-tooltip={name}>
+              <div
+                className="link-wrapper"
+                key={index}
+                data-tooltip={name}
+                style={{ ["--i"]: index }}
+              >
                 <a href={link} target="_blank" rel="noopener noreferrer">
                   <img src={image} alt={name} className="link" />
                 </a>

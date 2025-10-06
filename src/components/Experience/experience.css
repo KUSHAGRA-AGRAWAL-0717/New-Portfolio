@@ -1,190 +1,241 @@
 .experience-section {
-    min-height: 100vh;
-    width: 100%;
-    padding: clamp(2rem, 5vw, 5rem) clamp(0.5rem, 3vw, 1rem);
-    background: rgb(30, 30, 30);
-    color: #ffffff;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
+  padding: clamp(2rem, 5vw, 5rem) clamp(0.5rem, 3vw, 1rem);
+  background: rgb(30, 30, 30);
+  color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .container {
-    width: 100%;
-    max-width: min(1100px, 90vw);
-    margin: 0 auto;
-    text-align: center;
+  width: 100%;
+  max-width: min(1100px, 90vw);
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* Section Header */
 .section-title {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, #FFD700, #FFC107);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    line-height: 1.2;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffd700, #ffc107);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.2;
 }
 
 .section-description {
-    width: 100%;
-    max-width: min(800px, 90vw);
-    margin: 0 auto clamp(1.5rem, 4vw, 3rem);
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-    line-height: 1.6;
-    color: white;
-    padding: 0 1rem;
+  width: 100%;
+  max-width: min(800px, 90vw);
+  margin: 0 auto clamp(1.5rem, 4vw, 3rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
+  color: white;
+  padding: 0 1rem;
 }
 
 /* Timeline */
 .timeline {
-    position: relative;
-    width: 100%;
-    max-width: min(800px, 90vw);
-    margin: clamp(1.5rem, 4vw, 3rem) auto;
-    display: flex;
-    flex-direction: column;
-    gap: clamp(1.5rem, 3vw, 3rem);
-    text-align: left;
+  position: relative;
+  width: 100%;
+  max-width: min(800px, 90vw);
+  margin: clamp(1.5rem, 4vw, 3rem) auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  text-align: left;
 }
 
 .timeline::before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 2px;
-    background: linear-gradient(180deg, rgba(255,215,0,0.1), rgba(255,193,7,0.5), rgba(255,165,0,0.8));
-    left: clamp(25px, 7vw, 50px);
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 215, 0, 0.1),
+    rgba(255, 193, 7, 0.5),
+    rgba(255, 165, 0, 0.8)
+  );
+  left: clamp(25px, 7vw, 50px);
 }
 
 .timeline-item {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: clamp(1rem, 3vw, 2rem);
-    position: relative;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: clamp(1rem, 3vw, 2rem);
+  position: relative;
+  width: 100%;
 }
 
 .timeline-dot {
-    width: clamp(40px, 8vw, 50px);
-    height: clamp(40px, 8vw, 50px);
-    min-width: clamp(40px, 8vw, 50px);
-    min-height: clamp(40px, 8vw, 50px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    box-shadow: 0 0 15px rgba(255,215,0,0.5);
-    position: relative;
-    background: linear-gradient(135deg, #FFD700, #FFC107);
-    margin-left: clamp(30px, 7vw, 50px);
-    z-index: 2;
-    flex-shrink: 0;
+  width: clamp(40px, 8vw, 50px);
+  height: clamp(40px, 8vw, 50px);
+  min-width: clamp(40px, 8vw, 50px);
+  min-height: clamp(40px, 8vw, 50px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  position: relative;
+  background: linear-gradient(135deg, #ffd700, #ffc107);
+  margin-left: clamp(30px, 7vw, 50px);
+  z-index: 2;
+  flex-shrink: 0;
 }
 
 .achievement-dot {
-    background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+  background: linear-gradient(135deg, #ff9f43, #ff6b6b);
 }
 
 .timeline-content {
-    background: rgba(30, 30, 30);
-    border-radius: 10px;
-    padding: clamp(1rem, 2.5vw, 1.5rem);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 193, 7, 0.3);
-    transition: all 0.3s ease;
-    width: 100%;
-    margin-top: 0;
-    margin-left: 0;
+  background: rgba(30, 30, 30);
+  border-radius: 10px;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 .timeline-content:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(255,215,0,0.3);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
 }
 
 .experience-role {
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
 }
 
 .experience-company {
-    font-size: clamp(0.9rem, 2.5vw, 1rem);
-    color: #FFC107;
-    margin-bottom: 0.7rem;
-    font-weight: 500;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: #ffc107;
+  margin-bottom: 0.7rem;
+  font-weight: 500;
 }
 
 .experience-duration {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
-    color: #b8b8b8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: #b8b8b8;
 }
 
 .duration-icon {
-    color: #FFD700;
-    flex-shrink: 0;
+  color: #ffd700;
+  flex-shrink: 0;
+}
+
+/* Certificate link/button */
+.cert-row {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 0, 0.12),
+    rgba(255, 193, 7, 0.06)
+  );
+  color: #ffd700;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(255, 193, 7, 0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.cert-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(255, 193, 7, 0.12);
+}
+
+.cert-text {
+  font-size: 0.92rem;
+}
+
+.external-arrow {
+  opacity: 0.9;
+  font-size: 0.9rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .timeline {
-        text-align: left;
-    }
-    
-    .timeline::before {
-        left: clamp(20px, 6vw, 25px);
-    }
-    
-    .timeline-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    
-    .timeline-dot {
-        margin-left: 0;
-        align-self: flex-start;
-    }
-    
-    .timeline-content {
-        margin-left: 0;
-        width: calc(100% - clamp(40px, 8vw, 50px) - 1rem);
-        margin-top: -0.5rem;
-    }
+  .timeline {
+    text-align: left;
+  }
+
+  .timeline::before {
+    left: clamp(20px, 6vw, 25px);
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .timeline-dot {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+
+  .timeline-content {
+    margin-left: 0;
+    width: calc(100% - clamp(40px, 8vw, 50px) - 1rem);
+    margin-top: -0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .experience-section {
-        padding: 1.5rem 0.5rem;
-    }
-    
-    .timeline::before {
-        left: 20px;
-    }
-    
-    .timeline-dot {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .timeline-content {
-        padding: 1rem;
-    }
-    
-    .experience-duration {
-        flex-wrap: wrap;
-    }
+  .experience-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-dot {
+    width: 40px;
+    height: 40px;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+  }
+
+  .experience-duration {
+    flex-wrap: wrap;
+  }
 }

@@ -41,17 +41,54 @@
   display: flex;
   gap: 1rem;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity 0.4s cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1);
+  /* allow staggered reveal of icons */
 }
 
 .icon {
   cursor: pointer;
-  transition: transform 0.3s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 0.25s ease;
 }
 
 .icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.15) translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35),
+    0 0 8px rgba(255, 223, 0, 0.08) inset;
+}
+
+/* keyboard focus support */
+.icon:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 223, 0, 0.12), 0 6px 18px rgba(0, 0, 0, 0.35);
+  transform: scale(1.08);
+}
+
+/* small ripple on icon click */
+.icon::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.45s ease;
+}
+.icon:active::after {
+  transform: scale(6);
+  opacity: 1;
+  transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.55s ease;
 }
 
 /* Yellow Box Shadow Hover Effect */
@@ -65,6 +102,21 @@
   transform: translateY(0);
 }
 
+/* Staggered icon appearance when footer is hovered */
+.footer.hovered .icon {
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+}
+.footer.hovered .icon:nth-child(1) {
+  animation: iconPop 420ms ease forwards 120ms;
+}
+.footer.hovered .icon:nth-child(2) {
+  animation: iconPop 420ms ease forwards 240ms;
+}
+.footer.hovered .icon:nth-child(3) {
+  animation: iconPop 420ms ease forwards 360ms;
+}
+
 .footer.hovered .footerText {
   color: #ffdf00;
   transform: translateY(-5px);
@@ -72,13 +124,17 @@
 
 /* Background Accent Effect */
 .footer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
   animation: rotateAccent 10s linear infinite;
   z-index: 0;
   opacity: 0.3;
@@ -106,7 +162,7 @@
 }
 
 .footer.hovered .particle {
-  animation: floatParticle 3s ease-in-out infinite;
+  animation: floatParticle 2800ms cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
 }
 
 .footer.hovered .particle:nth-child(1) {
@@ -193,15 +249,30 @@
 @keyframes floatParticle {
   0% {
     opacity: 0;
-    transform: translateY(0) scale(0.5);
+    transform: translateY(0) scale(0.6) translateX(0);
   }
   50% {
     opacity: 0.7;
-    transform: translateY(-20px) scale(1);
+    transform: translateY(-18px) scale(1) translateX(6px);
   }
   100% {
     opacity: 0;
-    transform: translateY(-40px) scale(0.5);
+    transform: translateY(-36px) scale(0.6) translateX(-6px);
+  }
+}
+
+@keyframes iconPop {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -222,6 +293,35 @@
   animation: pulse 2s infinite ease-in-out;
 }
 
+/* subtle highlighting sweep on hover */
+.footer.hovered::after {
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: -10%;
+  width: 40%;
+  height: 120%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  transform: skewX(-20deg) translateX(-100%);
+  z-index: 1;
+  pointer-events: none;
+  animation: sweep 1.6s ease forwards;
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+}
+
+@keyframes sweep {
+  to {
+    transform: skewX(-20deg) translateX(220%);
+    opacity: 0.95;
+  }
+}
+
 /* Responsive Design */
 @media screen and (max-width: 600px) {
   .footer {
@@ -232,8 +332,23 @@
   .footerText {
     font-size: 0.8rem;
   }
-  
+
   .social-icons {
     gap: 0.7rem;
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .footer,
+  .footer * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .footer.hovered .social-icons,
+  .footer.hovered .icon {
+    opacity: 1;
+    transform: none;
   }
 }

@@ -16,13 +16,12 @@
 /* Title Styling */
 .skillTitle {
   font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
-  font-weight: 600;
-  padding-top: 1.5rem;
-  margin-bottom: 1rem;
+  font-weight: 700;
+  padding-top: 1.25rem;
+  margin-bottom: 0.75rem;
   color: #ffdf00;
-  letter-spacing: 1px;
-  animation: titleSlide 1s ease-in-out forwards;
-  opacity: 0;
+  letter-spacing: 0.6px;
+  opacity: 1;
   position: relative;
 }
 
@@ -46,8 +45,8 @@
   line-height: 1.5;
   padding: 0 1rem;
   animation: fadeIn 1.2s ease-in-out forwards;
-  opacity: 0;
-  animation-delay: 0.3s;
+  opacity: 1;
+  animation-delay: 0.2s;
 }
 
 /* Skills Bar Container */
@@ -65,18 +64,24 @@
   display: flex;
   align-items: center;
   padding: 1.2rem;
-  background: rgba(50, 50, 50, 0.9);
-  border-radius: 0.5rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: linear-gradient(
+    180deg,
+    rgba(40, 40, 40, 0.95),
+    rgba(24, 24, 24, 0.95)
+  );
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 0.35s ease;
   position: relative;
   opacity: 0;
-  transform: translateX(-50px);
-  overflow: hidden;
+  transform: translateY(18px) scale(0.995);
+  overflow: visible;
+  will-change: transform, opacity;
 }
 
 .skillBar::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -84,12 +89,12 @@
   height: 100%;
   background: #ffdf00;
   transform: scaleY(0);
-  transition: transform 0.4s ease;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
 .skillBar.animate {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0) scale(1);
 }
 
 /* Staggered animation for skill bars */
@@ -108,42 +113,71 @@
 @keyframes slideIn {
   0% {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateY(24px) scale(0.995);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 /* Hover Effect on Skill Bar */
 .skillBar:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(255, 223, 0, 0.3);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(255, 223, 0, 0.12);
 }
 
 .skillBar:hover::before {
   transform: scaleY(1);
 }
 
-/* Image Container */
-.skillBarImgContainer {
-  height: clamp(2.5rem, 6vw, 3.5rem);
-  width: clamp(2.5rem, 6vw, 3.5rem);
-  margin-right: clamp(1rem, 3vw, 2rem);
-  border-radius: 50%;
-  background: rgba(255, 223, 0, 0.1);
+/* Image container and progress ring — unified sizing so the image fits inside the ring */
+.skillVisual {
+  position: relative;
+  /* unified sizing variables so every skill uses the same circle */
+  --skill-size: 72px; /* visual diameter of the ring container */
+  --ring-stroke: 8px; /* stroke width given to the SVG ring */
+  --ring-gap: calc(
+    2 * var(--ring-stroke) + 10px
+  ); /* total inner gap to inset the image */
+  width: var(--skill-size);
+  height: var(--skill-size);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
+  margin-right: 1.25rem; /* keep spacing to text */
   flex-shrink: 0;
 }
 
+.progressRing {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.skillBarImgContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - var(--ring-gap));
+  height: calc(100% - var(--ring-gap));
+  border-radius: 50%;
+  background: rgba(255, 223, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
 .skillBarImgContainer::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -151,7 +185,7 @@
   bottom: 0;
   border-radius: 50%;
   border: 2px solid transparent;
-  transition: all 0.4s ease;
+  transition: all 0.35s ease;
 }
 
 .skillBar:hover .skillBarImgContainer::after {
@@ -162,11 +196,12 @@
 
 /* Skill Bar Image */
 .skillBarImg {
-  height: 80%;
-  width: 80%;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  display: block;
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
 /* Hover Effect on Skill Bar Image */
@@ -178,20 +213,21 @@
 .skillBarText {
   position: relative;
   z-index: 1;
-  transition: transform 0.3s ease;
+  transition: transform 0.28s ease;
 }
 
-.skillBarText h2 {
-  font-size: clamp(1rem, 3vw, 1.5rem);
+.skillBarText h3 {
+  font-size: clamp(1rem, 3vw, 1.35rem);
   color: #ffdf00;
   margin: 0;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.28s ease, transform 0.28s ease;
   position: relative;
   display: inline-block;
+  font-weight: 600;
 }
 
-.skillBarText h2::after {
-  content: '';
+.skillBarText h3::after {
+  content: "";
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -206,20 +242,58 @@
 }
 
 .skillBarText p {
-  font-size: clamp(0.8rem, 2.5vw, 1rem);
-  color: #e3e3e3;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: #dcdcdc;
   font-weight: 300;
-  margin-top: 0.5rem;
-  transition: color 0.3s ease, transform 0.3s ease;
+  margin-top: 0.45rem;
+  transition: color 0.28s ease, transform 0.28s ease;
   max-width: 100%;
 }
 
 .skillBar:hover .skillBarText h2 {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .skillBar:hover .skillBarText p {
   color: #ffffff;
+}
+
+/* Skill visual grouping (ring + image) */
+.skillVisual {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-right: 1.25rem;
+  flex-shrink: 0;
+}
+
+.progressRing {
+  width: 64px;
+  height: 64px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Subtle shine on hover */
+.skillBar::after {
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: -10%;
+  width: 30%;
+  height: 120%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0)
+  );
+  transform: skewX(-20deg) translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.2, 1);
+  pointer-events: none;
+}
+
+.skillBar:hover::after {
+  transform: skewX(-20deg) translateX(220%);
 }
 
 /* Keyframes for Fade-In Animation */
@@ -239,22 +313,22 @@
   .skillsBars {
     max-width: 90%;
   }
-  
+
   .skillBar {
     padding: 1rem;
     flex-direction: column;
     text-align: center;
   }
-  
+
   .skillBarImgContainer {
     margin-right: 0;
     margin-bottom: 1rem;
   }
-  
+
   .skillBarText {
     text-align: center;
   }
-  
+
   .skillBarText p {
     max-width: 100%;
   }
@@ -264,16 +338,16 @@
   #skills {
     padding: 1rem 0.5rem;
   }
-  
+
   .skillsBars {
     max-width: 95%;
     gap: 1rem;
   }
-  
+
   .skillBar {
     padding: 0.8rem;
   }
-  
+
   .skillDesc {
     padding: 0 0.5rem;
   }
@@ -283,15 +357,15 @@
   .skillTitle {
     padding-top: 1rem;
   }
-  
+
   .skillDesc {
     margin-bottom: 1rem;
   }
-  
+
   .skillBar {
     padding: 0.6rem;
   }
-  
+
   .skillBarImgContainer {
     height: 2.2rem;
     width: 2.2rem;
