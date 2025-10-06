@@ -255,7 +255,7 @@ const Contact = () => {
                 className="link-wrapper"
                 key={index}
                 data-tooltip={name}
-                style={{ ["--i"]: index }}
+                style={{ "--i": index }}
               >
                 <a href={link} target="_blank" rel="noopener noreferrer">
                   <img src={image} alt={name} className="link" />
