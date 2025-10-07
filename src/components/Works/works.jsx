@@ -3,7 +3,7 @@ import "./works.css";
 import mailmaster from "../assets/mailmaster.png";
 import coldmail from "../assets/coldemail.png";
 import tomato from "../assets/tomato.png";
-import faceRecog from "../assets/faceRecog.png";
+import faceRecog from "../assets/face.jpeg";
 import chatApp from "../assets/chatApp.png";
 
 const Works = () => {
